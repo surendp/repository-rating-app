@@ -39,7 +39,10 @@ const Text = ({ color, fontSize, fontWeight, style, children, ...props }) => {
   ];
 
   return (
-    <NativeText style={textStyle} {...props}>
+    <NativeText
+      style={textStyle}
+      {...props}
+    >
       {children}
     </NativeText>
   );

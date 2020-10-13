@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 const AppBarTab = ({ children }) => {
   return (
     <TouchableWithoutFeedback
-      onPress={() => {console.log(children)}}
+      onPress={() => {console.log(children);}}
     >
       <Text
         color="secondary"
