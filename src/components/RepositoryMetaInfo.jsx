@@ -25,23 +25,29 @@ const RepositoryMetaInfo = ({
   ratingAverage,
   reviewCount,
 }) => {
+  const formatCounts = count => {
+    return count > 999
+      ? `${Number.parseFloat(count/1000).toFixed(1)}k`
+      : count;
+  };
+
   return (
     <View style={styles.container}>
       <RepositoryMetaItem
         itemName="Stars"
-        itemValue={stargazersCount}
+        itemValue={formatCounts(stargazersCount)}
       />
       <RepositoryMetaItem
         itemName="Forks"
-        itemValue={forksCount}
+        itemValue={formatCounts(forksCount)}
       />
       <RepositoryMetaItem
         itemName="Reviews"
-        itemValue={reviewCount}
+        itemValue={formatCounts(reviewCount)}
       />
       <RepositoryMetaItem
         itemName="Rating"
-        itemValue={ratingAverage}
+        itemValue={formatCounts(ratingAverage)}
       />
     </View>
   );

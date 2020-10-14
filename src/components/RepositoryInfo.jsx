@@ -3,9 +3,9 @@ import {
   View,
   Image,
   StyleSheet,
-  Button,
 } from 'react-native';
 
+import Button from './Button';
 import Text from './Text';
 
 const styles = StyleSheet.create({
@@ -55,9 +55,11 @@ const RepositoryInfo = ({
           {description}
         </Text>
         <Button
-          title={language}
+          small
           onPress={() => {console.log(language);}}
-        />
+        >
+          {language}
+        </Button>
       </View>
     </View>
   );

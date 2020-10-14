@@ -14,7 +14,11 @@ const styles = StyleSheet.create({
   },
 
   buttonSizeLarge: {
-    height: 64
+    height: 64,
+  },
+
+  buttonSizeSmall: {
+    height: 32,
   },
 
   text: {
@@ -22,9 +26,12 @@ const styles = StyleSheet.create({
   }
 });
 
-const Button = ({ large, style, children, ...more}) => {
+const Button = ({
+  large, small, style, children, ...more
+}) => {
   const baseStyle = [
     styles.button,
+    small && styles.buttonSizeSmall,
     large && styles.buttonSizeLarge,
     style
   ];
