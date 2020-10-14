@@ -21,13 +21,15 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 16,
-    flexShrink: 1
+    flexShrink: 1,
+    flexGrow: 1,
   },
   description: {
     paddingTop: 4,
     paddingBottom: 8,
   },
   button: {
+    flexGrow: 0,
   }
 });
 
@@ -56,6 +58,7 @@ const RepositoryInfo = ({
           {description}
         </Text>
         <Button
+          style={styles.button}
           title={language}
         />
       </View>
