@@ -9,10 +9,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const AppBarTab = ({ children }) => {
+const AppBarTab = ({ children, ...more }) => {
   return (
     <TouchableWithoutFeedback
       onPress={() => {console.log(children);}}
+      {...more}
     >
       <Text
         color="secondary"

@@ -28,9 +28,6 @@ const styles = StyleSheet.create({
     paddingTop: 4,
     paddingBottom: 8,
   },
-  button: {
-    flexGrow: 0,
-  }
 });
 
 const RepositoryInfo = ({
@@ -58,8 +55,8 @@ const RepositoryInfo = ({
           {description}
         </Text>
         <Button
-          style={styles.button}
           title={language}
+          onPress={() => {console.log(language);}}
         />
       </View>
     </View>
