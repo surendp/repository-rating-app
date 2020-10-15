@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost';
 const REPOSITORY_DETAILS = gql`
   fragment RepositoryDetails on Repository {
     id
+    fullName
     ownerName
     ownerAvatarUrl
     stargazersCount
