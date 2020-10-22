@@ -8,7 +8,7 @@ const createApolloClient = authStorage => {
       try {
         const accessToken = await authStorage.getAccessToken();
         operation.setContext({
-          header: {
+          headers: {
             authorization: accessToken ? `Bearer ${accessToken}` : '',
           },
         });

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { Link } from 'react-router-native';
+import { useApolloClient } from '@apollo/react-hooks';
 
 import theme from '../theme';
 import AppBarTab from './AppBarTab';
+import useAuthorizedUser from '../hooks/useAuthorizedUser';
+import AuthStorage from '../utils/authStorage';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +16,36 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 });
+
+const SignInSignOutTab = () => {
+  const { loading, authorizedUser } = useAuthorizedUser();
+  const apolloClient = useApolloClient();
+  const authStorage = useContext(AuthStorage);
+
+  const signout = async () => {
+    await authStorage.removeAccessToken();
+    apolloClient.resetStore();
+  };
+
+  if (!loading && authorizedUser) {
+    return (
+      <AppBarTab
+        onPress={signout}
+      >
+        Sign out
+      </AppBarTab>
+    );
+  }
+
+  return (
+    <Link
+      to="/sign-in"
+      component={AppBarTab}
+    >
+      Sign in
+    </Link>
+  );
+};
 
 const AppBar = () => {
   return (
@@ -24,12 +57,7 @@ const AppBar = () => {
         >
           Repositories
         </Link>
-        <Link
-          to="/sign-in"
-          component={AppBarTab}
-        >
-          Sign in
-        </Link>
+        <SignInSignOutTab />
       </ScrollView>
     </View>
   );

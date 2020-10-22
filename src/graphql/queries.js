@@ -15,6 +15,16 @@ const GET_REPOSITORIES = gql`
   ${REPOSITORY_DETAILS}
 `;
 
+const GET_AUTHORIZED_USER = gql`
+  query authorizedUser {
+    authorizedUser {
+      id
+      username
+    }
+  }
+`;
+
 export {
-  GET_REPOSITORIES
+  GET_REPOSITORIES,
+  GET_AUTHORIZED_USER
 };
