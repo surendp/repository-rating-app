@@ -7,7 +7,7 @@ import { useApolloClient } from '@apollo/react-hooks';
 import theme from '../theme';
 import AppBarTab from './AppBarTab';
 import useAuthorizedUser from '../hooks/useAuthorizedUser';
-import AuthStorage from '../utils/authStorage';
+import AuthStorageContext from "../contexts/AuthStorageContext";
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 const SignInSignOutTab = () => {
   const { loading, authorizedUser } = useAuthorizedUser();
   const apolloClient = useApolloClient();
-  const authStorage = useContext(AuthStorage);
+  const authStorage = useContext(AuthStorageContext);
 
   const signout = async () => {
     await authStorage.removeAccessToken();
